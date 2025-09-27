@@ -1,27 +1,37 @@
 import React, { useState } from "react";
 
-const Login = ({ isLoggedIn, setIsLoggedIn }) => {
+const LoginForm = ({ isLoggedIn, setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username.trim() !== "") {
-      setIsLoggedIn(true);
-    }
+    // You can add validation here if needed
+    setIsLoggedIn(true);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Login Form</h2>
+      <h3>Login</h3>
       <input
         type="text"
-        placeholder="Enter username"
+        placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        required
       />
+      <br />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <br />
       <button type="submit">Login</button>
     </form>
   );
 };
 
-export default Login;
+export default LoginForm;
